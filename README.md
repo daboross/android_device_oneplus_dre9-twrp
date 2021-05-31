@@ -14,7 +14,7 @@ Sync aosp_r29 manifest:
 repo init --depth=1 --partial-clone --clone-filter=blob:limit=10M -u https://android.googlesource.com/platform/manifest -b android-11.0.0_r29
 ```
 
-Make a directory named local_manifest under .repo, and create a new manifest file, for example instantnoodle.xml
+Make a directory named local_manifest under .repo, and create a new manifest file, for example local_manifests.xml
 and then paste the following
 
 ```xml
@@ -23,7 +23,7 @@ and then paste the following
 <remote name="github"
 	fetch="https://github.com/" />
 
-<project path="device/oneplus/instantnoodle"
+<project path="device/oneplus/kebab"
 	name="theincognito/android_device_oneplus_kebab"
 	remote="github"
 	revision="android-11" />
@@ -53,7 +53,7 @@ To test it:
 # To temporarily boot it
 fastboot boot out/target/product/kebab/recovery.img 
 
-# Since 8 / Pro has a seperate recovery partition, you can flash the recovery with
+# Since 8T has a seperate recovery partition, you can flash the recovery with
 fastboot flash recovery recovery.img
 ```
 
