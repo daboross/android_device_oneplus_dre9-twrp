@@ -57,6 +57,8 @@ fastboot boot out/target/product/kebab/recovery.img
 fastboot flash recovery recovery.img
 ```
 
+Kernel: https://github.com/LineageOS/android_kernel_oneplus_sm8250
+
 ##### Credits
 - bigbiff for decryption
 - Systemad for original tree
