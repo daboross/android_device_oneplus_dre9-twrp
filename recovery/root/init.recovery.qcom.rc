@@ -48,12 +48,12 @@ on init
     # checker programs.
     mkdir /dev/fscklogs 0770 root system
 
-om boot
-    setprop sys.usb.config adb
+on boot
+    #setprop sys.usb.config adb
 
     #chmod 0777 mount-dynamic-rw.sh
     chmod 0777 /system/bin/unified-script.sh
-    #start unified-script
+    start unified-script
     #start mount-dynamic-rw
 
 on fs
