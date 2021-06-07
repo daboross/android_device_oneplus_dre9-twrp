@@ -15,10 +15,10 @@ AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
     boot \
     system \
-		system_ext \
+    system_ext \
     vendor \
     vbmeta \
-		dtbo
+    dtbo
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
@@ -72,3 +72,8 @@ PRODUCT_PACKAGES_ENG += \
 # Apex libraries
 PRODUCT_COPY_FILES += \
     $(OUT_DIR)/target/product/$(PRODUCT_RELEASE_NAME)/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libandroidicu.so
+
+#TWRP
+PRODUCT_COPY_FILES += \
+    device/oneplus/kebab/prebuilt/systemmanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/manifest.xml \
+    device/oneplus/kebab/prebuilt/vendormanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/manifest.xml \
