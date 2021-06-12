@@ -40,11 +40,7 @@ repo sync -j$(nproc --all)
 To build, execute these commands in order
 
 ```
-. build/envsetup.sh
-export ALLOW_MISSING_DEPENDENCIES=true
-export LC_ALL=C
-lunch aosp_kebab-eng
-make -j$(nproc --all) adbd recoveryimage
+. build/envsetup.sh; export ALLOW_MISSING_DEPENDENCIES=true; export LC_ALL=C; lunch aosp_kebab-eng; make -j$(nproc --all) adbd recoveryimage
 ```
 
 To test it:
