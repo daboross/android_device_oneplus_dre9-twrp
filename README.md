@@ -11,7 +11,8 @@ Setup repo tool from here https://source.android.com/setup/develop#installing-re
 Sync aosp_r29 manifest:
 
 ```
-repo init --depth=1 --partial-clone --clone-filter=blob:limit=10M -u https://android.googlesource.com/platform/manifest -b android-11.0.0_r29
+repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
+
 ```
 
 Make a directory named local_manifest under .repo, and create a new manifest file, for example local_manifests.xml
@@ -29,7 +30,7 @@ and then paste the following
 	revision="android-11" />
 </manifest>
 ```
-Use https://del.dog/a11-twrp-extras-updated.txt is same directory as well. You might need to pick few patches from gerrit.twrp.me to get some stuff working.
+You might need to pick few patches from gerrit.twrp.me to get some stuff working.
 
 Sync the sources with
 
