@@ -50,11 +50,11 @@ To test it:
 # To temporarily boot it
 fastboot boot out/target/product/kebab/recovery.img 
 
-# Since 8T has a seperate recovery partition, you can flash the recovery with
+# Since 8T has a separate recovery partition, you can flash the recovery with
 fastboot flash recovery recovery.img
 ```
 
-Kernel: https://github.com/LineageOS/android_kernel_oneplus_sm8250
+Kernel: https://github.com/AOSPA/android_kernel_oneplus_sm8250
 
 ##### Credits
 - bigbiff for decryption
