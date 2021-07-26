@@ -8,7 +8,7 @@ Setup repo tool from here https://source.android.com/setup/develop#installing-re
 
 ## Compile
 
-Sync aosp_r29 manifest:
+Sync TWRP manifest:
 
 ```
 repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
