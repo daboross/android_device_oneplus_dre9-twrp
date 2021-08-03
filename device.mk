@@ -4,10 +4,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 # Inherit from virtual AB OTA config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-LOCAL_PATH := device/oneplus/kebab
+LOCAL_PATH := device/oneplus/dre9
 
 # define hardware platform
-PRODUCT_PLATFORM := kona
+PRODUCT_PLATFORM := holi
 
 # A/B support
 AB_OTA_UPDATER := true
@@ -15,13 +15,39 @@ AB_OTA_UPDATER := true
 # A/B updater updatable partitions list. Keep in sync with the partition list
 # with "_a" and "_b" variants in the device. Note that the vendor can add more
 # more partitions to this list for the bootloader and radio.
-AB_OTA_PARTITIONS += \
+AB_OTA_PARTITIONS := \
     boot \
     system \
     system_ext \
     vendor \
-    vbmeta \
-    dtbo
+    vbmeta
+    # oplusstanvbk \
+    # multiimgoem \
+    # logo \
+    # vendor_boot \
+    # featenabler \
+    # uefisecapp \
+    # core_nhlos \
+    # imagefv \
+    # dtbo \
+    # vbmeta \
+    # qupfw \
+    # devcfg \
+    # boot \
+    # keymaster \
+    # dsp \
+    # abl \
+    # bluetooth \
+    # modem \
+    # hyp \
+    # tz \
+    # rpm \
+    # engineering_cdt \
+    # xbl_config \
+    # xbl \
+    # vm-system \
+    # vbmeta_system
+
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
@@ -34,13 +60,13 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
-    
+
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
     FILESYSTEM_TYPE_vendor=ext4 \
     POSTINSTALL_OPTIONAL_vendor=true
-    
+
 # Userdata Checkpointing OTA GC
 PRODUCT_PACKAGES += \
     checkpoint_gc
@@ -88,5 +114,5 @@ PRODUCT_COPY_FILES += \
 
 #TWRP
 PRODUCT_COPY_FILES += \
-    device/oneplus/kebab/prebuilt/systemmanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/manifest.xml \
-    device/oneplus/kebab/prebuilt/vendormanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/manifest.xml \
+    device/oneplus/dre9/prebuilt/systemmanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/manifest.xml \
+    device/oneplus/dre9/prebuilt/vendormanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/manifest.xml \

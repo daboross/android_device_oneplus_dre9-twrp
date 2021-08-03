@@ -15,5 +15,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_kebab.mk
+    $(LOCAL_DIR)/aosp_dre9.mk
 

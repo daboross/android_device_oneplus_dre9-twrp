@@ -15,7 +15,7 @@
 #
 
 # Release name
-PRODUCT_RELEASE_NAME := kebab
+PRODUCT_RELEASE_NAME := dre9
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/twrp/config/common.mk)
@@ -24,7 +24,7 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
 PRODUCT_NAME := aosp_$(PRODUCT_DEVICE)
 PRODUCT_BRAND := oneplus
-PRODUCT_MODEL := KB2003
+PRODUCT_MODEL := DE2117
 PRODUCT_MANUFACTURER := oneplus
 
 # Inherit from hardware-specific part of the product configuration
