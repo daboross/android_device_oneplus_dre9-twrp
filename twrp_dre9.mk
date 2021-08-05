@@ -14,18 +14,27 @@
 # limitations under the License.
 #
 
+# Custom vendor used in build tree
+CUSTOM_VENDOR := $(lastword $(subst /, ,$(firstword $(subst _, ,$(firstword $(MAKEFILE_LIST))))))
+
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/$(CUSTOM_VENDOR)/config/common.mk)
+
+# OEM Info (automatically taken from device tree path)
+BOARD_VENDOR := $(or $(word 2,$(subst /, ,$(firstword $(MAKEFILE_LIST)))),$(value 2))
+
+# Define hardware platform
+PRODUCT_PLATFORM := holi
+
 # Release name
 PRODUCT_RELEASE_NAME := dre9
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/twrp/config/common.mk)
-
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
-PRODUCT_NAME := aosp_$(PRODUCT_DEVICE)
-PRODUCT_BRAND := oneplus
+PRODUCT_NAME := $(CUSTOM_VENDOR)_$(PRODUCT_DEVICE)
+PRODUCT_BRAND := $(BOARD_VENDOR)
 PRODUCT_MODEL := DE2117
-PRODUCT_MANUFACTURER := oneplus
+PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)/device.mk)

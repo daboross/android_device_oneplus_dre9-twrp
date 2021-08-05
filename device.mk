@@ -1,16 +1,14 @@
 # Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-# Inherit from virtual AB OTA config
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-
-LOCAL_PATH := device/oneplus/dre9
-
-# define hardware platform
-PRODUCT_PLATFORM := holi
+DEVICE_PATH := device/$(BOARD_VENDOR)/$(PRODUCT_RELEASE_NAME)
 
 # A/B support
 AB_OTA_UPDATER := true
+
+# Inherit from virtual AB OTA config
+ENABLE_VIRTUAL_AB := true
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 # A/B updater updatable partitions list. Keep in sync with the partition list
 # with "_a" and "_b" variants in the device. Note that the vendor can add more
@@ -74,15 +72,15 @@ PRODUCT_PACKAGES += \
 # tell update_engine to not change dynamic partition table during updates
 # needed since our qti_dynamic_partitions does not include
 # vendor and odm and we also dont want to AB update them
-#TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
+TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service \
-    android.hardware.boot@1.0-impl-wrapper.recovery \
-    android.hardware.boot@1.0-impl-wrapper \
-    android.hardware.boot@1.0-impl.recovery \
+    android.hardware.boot@1.1-impl \
+    android.hardware.boot@1.1-service \
+    android.hardware.boot@1.1-impl-wrapper.recovery \
+    android.hardware.boot@1.1-impl-wrapper \
+    android.hardware.boot@1.1-impl.recovery \
     bootctrl.$(PRODUCT_PLATFORM) \
     bootctrl.$(PRODUCT_PLATFORM).recovery \
 
@@ -102,17 +100,18 @@ PRODUCT_PACKAGES_ENG += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(DEVICE_PATH)
 
-# tzdata
-PRODUCT_PACKAGES_ENG += \
-    tzdata_twrp
+# TODO: Do we need these?
+# # tzdata
+# PRODUCT_PACKAGES_ENG += \
+#     tzdata_twrp
 
-# Apex libraries
-PRODUCT_COPY_FILES += \
-    $(OUT_DIR)/target/product/$(PRODUCT_RELEASE_NAME)/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libandroidicu.so
+# # Apex libraries
+# PRODUCT_COPY_FILES += \
+#     $(OUT_DIR)/target/product/$(PRODUCT_RELEASE_NAME)/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libandroidicu.so
 
-#TWRP
-PRODUCT_COPY_FILES += \
-    device/oneplus/dre9/prebuilt/systemmanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/manifest.xml \
-    device/oneplus/dre9/prebuilt/vendormanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/manifest.xml \
+# #TWRP
+# PRODUCT_COPY_FILES += \
+#     device/oneplus/dre9/prebuilt/systemmanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/manifest.xml \
+#     device/oneplus/dre9/prebuilt/vendormanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/manifest.xml \
