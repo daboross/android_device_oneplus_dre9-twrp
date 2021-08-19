@@ -50,7 +50,12 @@ TARGET_USES_UEFI := true
 
 # Kernel
 TARGET_NO_KERNEL := false
-TARGET_KERNEL_ARCH := $(TARGET_ARCH)
+# TARGET_KERNEL_ARCH := $(TARGET_ARCH)
+# TARGET_KERNEL_HEADER_ARCH := $(TARGET_ARCH)
+# TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch-linux-android-
+TARGET_KERNEL_CONFIG := defconfig
+TARGET_KERNEL_SOURCE := kernel/oneplus/sm4350
+
 BOARD_KERNEL_CMDLINE := \
     androidboot.console=ttyMSM0 \
     androidboot.hardware=qcom \
@@ -62,8 +67,7 @@ BOARD_KERNEL_CMDLINE := \
     service_locator.enable=1 \
     swiotlb=2048 \
     video=vfb:640x400,bpp=32,memsize=3072000
-
-BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_KERNEL_IMAGE_NAME := Image.gz
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_BOOT_HEADER_VERSION := 2
 BOARD_KERNEL_BASE          := 0x00000000
