@@ -78,16 +78,18 @@ To build, execute these commands in order
     export ALLOW_MISSING_DEPENDENCIES=true && \
     export LC_ALL=C && \
     lunch twrp_dre9-eng && \
-    make -j adbd recoveryimage
+    make -j bootimage
 ```
 
 To test it:
 
 ```
 # To temporarily boot it
-fastboot boot out/target/product/dre9/recovery.img
+fastboot boot out/target/product/dre9/boot.img
 
-# Since the Nord N200 5G has a separate recovery partition, you can flash the recovery with
+# Since the Nord N200 5G uses a combined recovery-boot partition, you need to
+# flash the boot partition. Note: you may want to switch to the non-active slot
+# (a or b) before flashing to test.
 fastboot flash recovery recovery.img
 ```
 
