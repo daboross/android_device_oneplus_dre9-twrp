@@ -77,7 +77,7 @@ To build, execute these commands in order
 . build/envsetup.sh && \
     export ALLOW_MISSING_DEPENDENCIES=true && \
     export LC_ALL=C && \
-    lunch aosp_dre9-eng && \
+    lunch twrp_dre9-eng && \
     make -j adbd recoveryimage
 ```
 
